@@ -156,8 +156,12 @@ jobs:
 
           #Fixed warnings 
 
-          sed -i '' 's/#include "lws_config.h"/#include <libwebsockets\/lws_config.h>/' build/libwebsockets.xcframework/ios-arm64/libwebsockets.framework/Headers/libwebsockets.h
-          sed -i '' 's/#include "lws_config.h"/#include <libwebsockets\/lws_config.h>/' build/libwebsockets.xcframework/ios-x86_64-simulator/libwebsockets.framework/Headers/libwebsockets.h
+          pwd
+          ls -al 
+          ls -al ../
+
+          sed -i '' 's/#include "lws_config.h"/#include <libwebsockets\/lws_config.h>/' libwebsockets.xcframework/ios-arm64/libwebsockets.framework/Headers/libwebsockets.h
+          sed -i '' 's/#include "lws_config.h"/#include <libwebsockets\/lws_config.h>/' libwebsockets.xcframework/ios-x86_64-simulator/libwebsockets.framework/Headers/libwebsockets.h
 
 
       - name: Zip artifact
