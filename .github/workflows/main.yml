@@ -42,7 +42,7 @@ jobs:
         run: |
           git reset --hard 9f9dba9f209403c1e1ccf717b1252dd0e2bd799c
 
-          #Remove -Werror from cmake to prevent wornnings on compile time 
+          #Remove -Werror from cmake to prevent errors on compile time 
           sed -i '' 's/-Werror //' CMakeLists.txt
 
           ########### create arm64 framework
@@ -161,7 +161,13 @@ jobs:
           -output libwebsockets.xcframework
 
           cd ..
-    
+
+          #Fix warnings 
+
+          sed -i '' 's/#include "lws_config.h"/#include <libwebsockets\/lws_config.h>/' build/libwebsockets.xcframework/ios-arm64/libwebsockets.framework/Headers/libwebsockets.h
+          sed -i '' 's/#include "lws_config.h"/#include <libwebsockets\/lws_config.h>/' build/libwebsockets.xcframework/ios-x86_64-simulator/libwebsockets.framework/Headers/libwebsockets.h
+
+
       - name: Zip artifact
         working-directory: libwebsockets
         run: zip -r libwebsockets.xcframework.zip build/libwebsockets.xcframework
@@ -170,7 +176,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: libwebsockets.xcframework
-          path: libwebsockets/libwebsockets.xcframework
+          path: libwebsockets/libwebsockets.xcframework.zip
           if-no-files-found: error
           
   #release:
