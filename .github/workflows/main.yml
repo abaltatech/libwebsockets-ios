@@ -30,12 +30,6 @@ jobs:
           fetch-depth: 0
           path: libwebsockets
 
-      - name: test
-        run: |
-          ls -al 
-          ls -al ../
-          ls -al ../../
-
       - name: Build
         shell: bash
         working-directory: libwebsockets
@@ -143,7 +137,6 @@ jobs:
           mkdir -p libwebsockets.framework/Headers
           cp -r ../../build-arm64-sim/libwebsockets/libwebsockets.framework/Headers libwebsockets.framework
 
-
           lipo -create ../../build-arm64-sim/libwebsockets/lib/libwebsockets.a ../../build-x86-64-sim/libwebsockets/lib/libwebsockets.a -output ./libwebsockets.framework/libwebsockets
 
           cd ../..
@@ -160,9 +153,8 @@ jobs:
           -framework ../arm64_x86_64-simulator/libwebsockets/libwebsockets.framework \
           -output libwebsockets.xcframework
 
-          cd ..
 
-          #Fix warnings 
+          #Fixed warnings 
 
           sed -i '' 's/#include "lws_config.h"/#include <libwebsockets\/lws_config.h>/' build/libwebsockets.xcframework/ios-arm64/libwebsockets.framework/Headers/libwebsockets.h
           sed -i '' 's/#include "lws_config.h"/#include <libwebsockets\/lws_config.h>/' build/libwebsockets.xcframework/ios-x86_64-simulator/libwebsockets.framework/Headers/libwebsockets.h
