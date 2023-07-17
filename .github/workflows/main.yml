@@ -167,7 +167,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: libwebsockets.xcframework
+          name: libwebsockets.xcframework.zip
           path: libwebsockets/libwebsockets.xcframework.zip
           if-no-files-found: error
           
