@@ -17,15 +17,21 @@ jobs:
           cmake-version: 3.26
 
 
-      - name: Checkout OpenCV
+      - name: Checkout ios-cmake
         uses: actions/checkout@v3
         with:
           repository: leetal/ios-cmake
       
-      - name: Checkout OpenCV
+      - name: Checkout libwebsockets
         uses: actions/checkout@v3
         with:
           repository: warmcat/libwebsockets
+
+      - name: test
+        run: |
+          ls -al 
+          ls -al ../
+          ls -al ../../
 
       - name: Build
         shell: bash
