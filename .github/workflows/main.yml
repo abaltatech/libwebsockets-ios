@@ -36,8 +36,6 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd libwebsockets
-
           git reset --hard 9f9dba9f209403c1e1ccf717b1252dd0e2bd799c
 
           sed -i 's/set(CMAKE_C_FLAGS "-Wall -Wsign-compare -Wuninitialized -Werror ${VISIBILITY_FLAG} -Wundef ${GCOV_FLAGS} ${CMAKE_C_FLAGS} ${ASAN_FLAGS}" )/set(CMAKE_C_FLAGS "-Wall -Wsign-compare -Wuninitialized ${VISIBILITY_FLAG} -Wundef ${GCOV_FLAGS} ${CMAKE_C_FLAGS} ${ASAN_FLAGS}" )/' CMakeLists.txt
@@ -161,7 +159,7 @@ jobs:
           cd ..
     
       - name: Zip artifact
-        working-directory: libwebsockets
+        #working-directory: libwebsockets
         run: zip -r libwebsockets.xcframework.zip build/libwebsockets.xcframework
 
       - name: Upload artifact
