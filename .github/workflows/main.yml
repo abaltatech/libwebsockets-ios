@@ -28,7 +28,7 @@ jobs:
         with:
           repository: warmcat/libwebsockets
           fetch-depth: 0
-          ref: '3.2.1'
+          ref: 'v3.2.1'
           path: libwebsockets
 
       - name: Build
