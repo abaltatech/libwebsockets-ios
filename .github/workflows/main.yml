@@ -194,6 +194,23 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: libwebsockets.xcframework.zip
+
+      - name: Get version
+        id: get_version
+        run: echo "VERSION=$(cat .version)" >> $GITHUB_OUTPUT
+              
+      - name: Update Package.swift
+        run: |
+          sed -i "s/let version = \".*\"/let version = \"${{ steps.get_version.outputs.VERSION }}\"/" Package.swift
+          sed -i "s/let checksum = \".*\"/let checksum = \"$(shasum -a 256 opencv2.xcframework.zip | cut -d ' ' -f 1)\"/" Package.swift
+  
+      - name: Commit and push
+        run: |
+          git config --local user.email "abalta-github-build@abaltatech.com"
+          git config --local user.name "abalta-github-build"
+          git add Package.swift
+          git commit -m "Update Package.swift"
+          git push
           
       - name: Release
         uses: softprops/action-gh-release@v1
