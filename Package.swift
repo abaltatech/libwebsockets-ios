@@ -3,8 +3,8 @@
 
 import PackageDescription
 
-let version = "1"
-let checksum = "7e578f7734ff25796acc2847163c86c857a11351a2f99b220d11189639786ee9"
+let version = "v3.2.1"
+let checksum = ""
 
 let package = Package(
     name: "LibWebSockets",
