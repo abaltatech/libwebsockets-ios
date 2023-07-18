@@ -27,14 +27,15 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: warmcat/libwebsockets
-          fetch-depth: 0
+          #fetch-depth: 0
+          ref: '3.2.1'
           path: libwebsockets
 
       - name: Build
         shell: bash
         working-directory: libwebsockets
         run: |
-          git reset --hard 9f9dba9f209403c1e1ccf717b1252dd0e2bd799c
+          #git reset --hard 9f9dba9f209403c1e1ccf717b1252dd0e2bd799c
 
           #Remove -Werror from cmake to prevent errors on compile time 
           sed -i '' 's/-Werror //' CMakeLists.txt
