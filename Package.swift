@@ -3,17 +3,17 @@
 
 import PackageDescription
 
-let version = "1"
-let checksum = "7e578f7734ff25796acc2847163c86c857a11351a2f99b220d11189639786ee9"
+let version = "v3.2.1"
+let checksum = "fc9bf90cfa260e7d055c2d02257a80cb5b9eda50b61b1bb84114654ed29320fa"
 
 let package = Package(
-    name: "LibWebSockets",
+    name: "Libwebsockets",
     platforms: [
         .macOS(.v10_13), .iOS(.v11), .macCatalyst(.v13)
     ],
     products: [
         .library(
-            name: "LibWebSockets",
+            name: "Libwebsockets",
             targets: ["libwebsockets"])
     ],
     targets: [
