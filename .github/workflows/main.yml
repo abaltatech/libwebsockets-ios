@@ -3,6 +3,7 @@ name: Build and release a new version
 on:
   push:
     branches: [ "main" ]
+    paths: [ ".version" ] 
 
   workflow_dispatch:
 
@@ -16,19 +17,30 @@ jobs:
         with:
           cmake-version: 3.26.4
 
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          path: libwebsockets-abalta
+
 
       - name: Checkout ios-cmake
         uses: actions/checkout@v3
         with:
           repository: leetal/ios-cmake
           path: ios-cmake
+
+      - name: Get version
+        id: get_version
+        working-directory: libwebsockets-abalta
+        run: echo "VERSION=$(cat .version)" >> $GITHUB_OUTPUT
+
       
       - name: Checkout libwebsockets
         uses: actions/checkout@v3
         with:
           repository: warmcat/libwebsockets
           #fetch-depth: 0
-          ref: 'v3.2.1'
+          ref: refs/tags/${{ steps.get_version.outputs.VERSION }}
           path: libwebsockets
 
       - name: Build
