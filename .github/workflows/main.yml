@@ -202,7 +202,7 @@ jobs:
       - name: Update Package.swift
         run: |
           sed -i "s/let version = \".*\"/let version = \"${{ steps.get_version.outputs.VERSION }}\"/" Package.swift
-          sed -i "s/let checksum = \".*\"/let checksum = \"$(shasum -a 256 opencv2.xcframework.zip | cut -d ' ' -f 1)\"/" Package.swift
+          sed -i "s/let checksum = \".*\"/let checksum = \"$(shasum -a 256 libwebsockets.xcframework.zip | cut -d ' ' -f 1)\"/" Package.swift
   
       - name: Commit and push
         run: |
@@ -216,4 +216,4 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
          files: libwebsockets.xcframework.zip
-         tag_name: 1.00
+         tag_name: ${{ steps.get_version.outputs.VERSION }}
