@@ -210,7 +210,7 @@ jobs:
           git config --local user.name "abalta-github-build"
           git add Package.swift
           git commit -m "Update Package.swift"
-          current_tag=$(git describe --tags $(git rev-list --tags --max-count=1))
+          current_tag=$(git ls-remote --tags origin)
           if [[ "$current_tag" == ${{ steps.get_version.outputs.VERSION }} ]]; then
              git tag -d "$current_tag"
              git push --delete origin "$current_tag"
