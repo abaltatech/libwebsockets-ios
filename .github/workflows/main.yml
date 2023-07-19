@@ -211,7 +211,7 @@ jobs:
           git add Package.swift
           git commit -m "Update Package.swift"
           current_tag=$(git ls-remote --tags origin)
-          if [[ "$current_tag" == ${{ steps.get_version.outputs.VERSION }} ]]; then
+          if [[ "$current_tag" == "${{ steps.get_version.outputs.VERSION }}" ]]; then
              echo "delete tag"
              git tag -d "$current_tag"
              git push --delete origin "$current_tag"
