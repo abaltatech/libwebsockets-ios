@@ -4,7 +4,7 @@
 import PackageDescription
 
 let version = "v3.2.1"
-let checksum = "725faadfc05d17359ad2183f82ed9ea5d5ae85445f2f39692a4001bff6b607ac"
+let checksum = "ddb153695b0e2e85d65387932b690455dc94203fab6bb39cd6072cc317191ace"
 
 let package = Package(
     name: "Libwebsockets",
