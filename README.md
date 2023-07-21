@@ -7,6 +7,7 @@ This is a swift package that exposes libwebsockets.xcframework built from the [l
   - [Swift Package Manager](#swift-package-manager)
   - [Xcode](#xcode)
 - [Documentation](#documentation)
+- [License](#license)
 - [Usage](#usage)
 ## Installation
 
@@ -43,6 +44,11 @@ Add https://github.com/abaltatech/libwebsockets-ios.git to your package dependen
 ## Documentation
 You can view the api reference docs at https://libwebsockets.org/lws-api-doc-main/html/index.html  
 For more information you can visit the [libwebsockets](https://github.com/warmcat/libwebsockets) repository
+
+## License
+
+This package uses the same license as the official [libwebsockets](https://github.com/warmcat/libwebsockets/blob/main/LICENSE) library. The license can be found in the [`LICENSE.md`](LICENSE.md) file.
+
 ## Usage
 Include the c++ headers
 ```c++
