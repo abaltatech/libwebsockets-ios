@@ -18,13 +18,13 @@ jobs:
           cmake-version: 3.26.4
 
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: libwebsockets-abalta
 
 
       - name: Checkout ios-cmake
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: leetal/ios-cmake
           path: ios-cmake
@@ -36,7 +36,7 @@ jobs:
 
       
       - name: Checkout libwebsockets
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: warmcat/libwebsockets
           #fetch-depth: 0
@@ -177,7 +177,7 @@ jobs:
         run: zip -r libwebsockets.xcframework.zip build/libwebsockets.xcframework
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: libwebsockets.xcframework.zip
           path: libwebsockets/libwebsockets.xcframework.zip
@@ -188,10 +188,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         
       - name: Download artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: libwebsockets.xcframework.zip
 
@@ -215,7 +215,7 @@ jobs:
           git push -f origin ${{ steps.get_version.outputs.VERSION }}
           
       - name: Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
          files: libwebsockets.xcframework.zip
          tag_name: ${{ steps.get_version.outputs.VERSION }}
