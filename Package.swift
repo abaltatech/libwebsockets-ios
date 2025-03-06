@@ -10,6 +10,7 @@ let package = Package(
     name: "Libwebsockets",
     platforms: [
         .macOS(.v10_13), .iOS(.v16), .macCatalyst(.v13)
+        
     ],
     products: [
         .library(
